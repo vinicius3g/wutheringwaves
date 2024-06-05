@@ -37,9 +37,9 @@ export const BackgroundBox: React.FC = () => {
       >
         <div className={styles.light}></div>
         <div className={styles.lizi_box}>
-          <video controls={false} autoPlay={true} muted={true} loop={true}>
+          <video playsInline autoPlay={true} loop={true} preload='auto'>
             <source src={url2} type="video/mp4" />
-            <track kind="captions" src="" label="No captions" />
+            {/* <track kind="captions" src="" label="No captions" /> */}
           </video>
         </div>
         <img src={url3} alt="" />
