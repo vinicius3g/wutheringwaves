@@ -2,22 +2,14 @@
 
 import styles from './PageContent.module.scss';
 import Slider from '../Slider';
+import InitialPage from '../InitialPage';
 
 const PageContent: React.FC = () => {
-  const slides = [
-    <div key="first" className={styles.box2}>
-      box1
-    </div>,
-    <div key="first" className={styles.box2}>
-      box2
-    </div>
-  ];
+  const slides = [<InitialPage key="1" />];
 
   return (
-    <div className={styles.box}>
-      <Slider
-        slides={slides}
-      />
+    <div className={styles.swipper}>
+      <Slider slides={slides} />
     </div>
   );
 };
