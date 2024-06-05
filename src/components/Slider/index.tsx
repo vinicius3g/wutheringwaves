@@ -18,15 +18,15 @@ const Slider: React.FC<SlidesProps> = ({ slides }) => {
 
   // const isDesktop = windowSize.width >= 768;
 
-  console.log({windowSize})
+  console.log({ windowSize });
 
   const handlePrevSlider = () => {
     setActiveSlide(prevSlide =>
       prevSlide === 0 ? slides.length - 1 : prevSlide - 1
     );
 
-    handlePrev('translate(0px, 0px)'); 
-    handleNext('translate(0px, 0px)')
+    handlePrev('translate(0px, 0px)');
+    handleNext('translate(0px, 0px)');
   };
 
   const handleNextSlider = () => {
@@ -34,8 +34,8 @@ const Slider: React.FC<SlidesProps> = ({ slides }) => {
       prevSlide === slides.length - 1 ? 0 : prevSlide + 1
     );
 
-    handleNext(`translate(-${windowSize.width}px, 0px)`); 
-    // handleNext(`translate(-1231, 0px)`); 
+    handleNext(`translate(-${windowSize.width}px, 0px)`);
+    // handleNext(`translate(-1231, 0px)`);
   };
 
   // // Handle transitions based on currentSlide (optional)
@@ -48,14 +48,20 @@ const Slider: React.FC<SlidesProps> = ({ slides }) => {
   // }, [currentSlide]);
 
   return (
-    <div className={styles.slider}>
-      <button onClick={handlePrevSlider} className={styles.sliderButton}>
-        Anterior
-      </button>
-      <div className={styles.sliderContent}>{slides[activeSlide]}</div>
-      <button onClick={handleNextSlider} className={styles.sliderButton}>
-        Próximo
-      </button>
+    <div
+      className={styles.slider_container}
+    >
+      <div className={styles.swipper}>
+        <button onClick={handlePrevSlider} className={styles.sliderButton}>
+          Anterior
+        </button>
+
+        <div className={styles.main_content}>{slides[activeSlide]}</div>
+
+        <button onClick={handleNextSlider} className={styles.sliderButton}>
+          Próximo
+        </button>
+      </div>
     </div>
   );
 };
