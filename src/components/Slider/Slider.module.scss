@@ -38,13 +38,62 @@
     height: 100%;
   }
 
-  .sliderButton {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px 20px;
+  .sliderButton_prev {
+    width: 2.843rem;
+    height: 4.059rem;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAuCAMAAAB+ruu2AAAAXVBMVEUAAADatn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn0pq5DgAAAAHnRSTlMABjbtVPGFHQ3cx+HXtXz30qCaaBXBkF5Jq3JAKs7kRMYxAAABB0lEQVQ4y4VU25aDIAxcvAveyrZVqzv//5l7agPYA4nzmElyJgPJzwV+r/hSpFUFMeHeA7nAZwaAkdpDStj/cKBj+NeID9YkXT9AGFSKn0ui24wZjnBrUnyRE50XKbq5gfCoU/xmRHXqCVFd1onqVAVRXTYFdWI5Brm8y+Ry24TobKs9lMfqVgDju98AB31Wt31CX9OX8/lDHKHRSYgNWo7A5CyMLVYaAAr/CLENTaX75eREKxoZmoRhY2y+iVXpjMZyhofZ3H8cX9y6riD0dwrxn3phMmq/Fk/FXhXKmHauiXZauQulBk5rbL2mALuDLcP7gQ3Deq1GPJMWKC8OLSUIQiiBx/wPA+0r2wKgqk0AAAAASUVORK5CYII=')
+      no-repeat center;
+    background-size: 100% 100%;
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 2.6rem;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
     cursor: pointer;
-    border-radius: 5px;
-    z-index: 100;
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+  }
+
+  .sliderButton_next {
+    width: 2.843rem;
+    height: 4.059rem;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAuCAMAAAB+ruu2AAAAWlBMVEUAAADatn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn3atn2dqafcAAAAHXRSTlMABu7bDDjzhcdSHuHSr3wyFqCawZBpYFi4cklBK3S5C6IAAAECSURBVDjLhVTZEoMgDCyHCl6t95n//82OVFALJHnKDMuySZa8hhcRKYXgkDECAPMHAxQAUCQEALBnBJgo9xiggl+kSwTAajijyyOQRFiSMYKQjSWpYgVP/ERwHUHknSVpJKW12Cit0DNKq3hTWiFjlNYyRlIDRZIIn2TP2vGCy/afJEmPJt9INH+SKJNvd63KkdSHr0223MtNHx0pTaq9hjkR+kgV88sQ1svrrDLpDQ16ibXSXPdDc/T61SIR9MTbqWuDrlrsMV9Dx58Zd/bqbD0FHdvj1/cS/1qDHY3Kg+oqN9mwx5RrLb5AGomuIK7xHaVyfA22DN+TxKo1z2MxEudfBCQqkcIYLzAAAAAASUVORK5CYII=')
+      no-repeat center;
+    background-size: 100% 100%;
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    right: 2.6rem;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    cursor: pointer;
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+  }
+
+  .bullets {
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    bottom: 6rem;
+    width: 100%;
+    left: 4.4126rem;
+
+    .bullet {
+      width: 1.234rem;
+      height: 1.234rem;
+      background: #fff;
+      opacity: .4;
+      border-radius: 1.14rem;
+      margin-right: 1rem;
+      -webkit-transition: all .3s;
+      transition: all .3s;
+      cursor: pointer;
+
+      &.active {
+        width: 6.53rem;
+      }
+    }
   }
 }

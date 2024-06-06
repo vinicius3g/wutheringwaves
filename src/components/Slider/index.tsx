@@ -1,24 +1,18 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './Slider.module.scss';
 import { useNav } from '@/context/NavContext';
 import useWindowSize from '@/hooks/useWindowSize';
 
 interface SlidesProps {
   slides: React.ReactNode[];
-  // handlePrev: (transition: string) => void;
-  // handleNext: (transition: string) => void;
 }
 
 const Slider: React.FC<SlidesProps> = ({ slides }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const { handleNext, handlePrev } = useNav();
   const windowSize = useWindowSize();
-
-  // const isDesktop = windowSize.width >= 768;
-
-  console.log({ windowSize });
 
   const handlePrevSlider = () => {
     setActiveSlide(prevSlide =>
@@ -35,32 +29,58 @@ const Slider: React.FC<SlidesProps> = ({ slides }) => {
     );
 
     handleNext(`translate(-${windowSize.width}px, 0px)`);
-    // handleNext(`translate(-1231, 0px)`);
   };
 
-  // // Handle transitions based on currentSlide (optional)
-  // useEffect(() => {
-  //   if (currentSlide !== 0) {
-  //     setTransitionState('translateX(100%)'); // Initial transition for non-first slide
-  //   } else {
-  //     setTransitionState('none'); // No transition for first slide
-  //   }
-  // }, [currentSlide]);
+  const handleWheel = (e: React.WheelEvent) => {
+    if (e.deltaY < 0 && activeSlide < slides.length - 1) {
+      handleNextSlider();
+    } else if (e.deltaY > 0 && activeSlide > 0) {
+      handlePrevSlider();
+    }
+  };
+
+  const handleBulletClick = (index: number) => {
+    if (index > activeSlide) {
+      handleNextSlider();
+    } else if (index < activeSlide) {
+      handlePrevSlider();
+    }
+    setActiveSlide(index);
+  };
 
   return (
-    <div
-      className={styles.slider_container}
-    >
+    <div className={styles.slider_container} onWheel={handleWheel}>
       <div className={styles.swipper}>
-        <button onClick={handlePrevSlider} className={styles.sliderButton}>
-          Anterior
-        </button>
-
         <div className={styles.main_content}>{slides[activeSlide]}</div>
 
-        <button onClick={handleNextSlider} className={styles.sliderButton}>
-          Próximo
-        </button>
+        {activeSlide > 0 && (
+          <button
+            onClick={handlePrevSlider}
+            className={styles.sliderButton_prev}
+          >
+            <i></i>
+          </button>
+        )}
+        {activeSlide < slides.length - 1 && (
+          <button
+            onClick={handleNextSlider}
+            className={styles.sliderButton_next}
+          >
+            <i></i>
+          </button>
+        )}
+      </div>
+
+      <div className={styles.bullets}>
+        {slides.map((_, index) => (
+          <div
+            key={index}
+            className={`${styles.bullet} ${
+              index === activeSlide ? styles.active : ''
+            }`}
+            onClick={() => handleBulletClick(index)}
+          ></div>
+        ))}
       </div>
     </div>
   );
