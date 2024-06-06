@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './InitialPage.module.scss';
+import RigthBar from '../RigthBar';
 
 const InitialPage: React.FC = () => {
   return (
@@ -65,6 +66,7 @@ const InitialPage: React.FC = () => {
           </div>
         </div>
       </div>
+      <RigthBar />
     </>
   );
 };
